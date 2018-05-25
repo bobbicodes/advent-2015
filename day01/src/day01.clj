@@ -1,8 +1,17 @@
 (ns day01)
 
+(defn parse-step [floor step]
+  (case step
+    \( (inc floor)
+    \) (dec floor)
+    floor))
+
+(defn parse-floor
+  [steps]
+  (reduce parse-step 0 steps))
+
  (defn -main []
-   (println (- (count (re-seq #"\(" (slurp "input")))
-     (count (re-seq #"\)" (slurp "input"))))))
+   (println (parse-floor (slurp "input"))))
 
 ; --- Part Two ---
 
