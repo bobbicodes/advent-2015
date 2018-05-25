@@ -17,8 +17,16 @@
 ; ))) and )())()) both result in floor -3.
 ; To what floor do the instructions take Santa?
 
-; here's dave yarwood's main function:
-(defn -main
-  []
-  (with-open [rdr (io/reader (io/resource "2015-12-01-01-input"))]
-    (-> rdr util/char-seq follow-instructions prn)))
+; Puzzle input saved as day01
+
+(count (re-seq #"\(" "((("))
+;=> 3
+
+(count (re-seq #"\(" (slurp "day01")))
+;=> 3537
+
+(count (re-seq #"\)" (slurp "day01")))
+;=> 3463
+
+(- 3537 3463)
+;=> 74
