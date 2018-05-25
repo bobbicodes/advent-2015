@@ -1,20 +1,20 @@
-(ns advent.2015.12.02.puzzle-1
-  (:require [clojure.java.io :as io]))
+(ns advent.2015.12.01.puzzle-1
+  (:require [clojure.java.io :as io]
+            [advent.util     :as util]))
 
-(defn parse-dimensions
-  [s]
-  (->> (re-matches #"(\d+)x(\d+)x(\d+)" s)
-       rest
-       (map #(Integer/parseInt %))))
+(defn follow-instruction
+  [floor instruction]
+  (case instruction
+    \( (inc floor)
+    \) (dec floor)
+    floor))
 
-(defn wrapping-paper-cost
-  [s]
-  (let [[l w h]      (parse-dimensions s)
-        surface-area (+ (* 2 l w) (* 2 w h) (* 2 h l))
-        slack        (min (* l w) (* w h) (* h l))]
-    (+ surface-area slack)))
+(defn follow-instructions
+  [instructions]
+  (reduce follow-instruction 0 instructions))
 
 (defn -main
   []
-  (with-open [rdr (io/reader (io/resource "2015-12-02-01-input"))]
-    (->> rdr line-seq (map wrapping-paper-cost) (reduce +) prn)))
+  (with-open [rdr (io/reader (io/resource "2015-12-01-01-input"))]
+    (-> rdr util/char-seq follow-instructions prn)))
+
