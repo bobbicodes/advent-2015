@@ -1,3 +1,5 @@
+#!/bin/bash
+
 c=0; n=1
 for i in $(fold -b1 $1); do
     [ "$i" = "(" ] && c=$((c+1))
