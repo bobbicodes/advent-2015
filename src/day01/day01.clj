@@ -1,4 +1,18 @@
+; Puzzle input saved as input
+
 (ns day01)
+
+(count (re-seq #"\(" "((("))
+;=> 3
+
+(count (re-seq #"\(" (slurp "input")))
+;=> 3537
+
+(count (re-seq #"\)" (slurp "input")))
+;=> 3463
+
+(- 3537 3463)
+;=> 74
 
 (defn parse-step [floor step]
   (case step
