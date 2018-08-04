@@ -11,7 +11,7 @@ For example:
 
 All numbers in the elves' list are in feet. How many total **square feet of wrapping paper** should they order?
 
-Your puzzle answer was `1586300`.
+Your puzzle answer was `1606483`.
 
 ## Part Two
 
